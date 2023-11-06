@@ -1,0 +1,189 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 15:20+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\store\forms.py:18 .\store\models.py:8 .\store\models.py:13
+#: .\store\models.py:23 .\templates\store\category_list.html:9
+#: .\templates\store\product_list.html:9
+msgid "name"
+msgstr "الاسم"
+
+#: .\store\forms.py:21
+msgid "Some useful help text."
+msgstr "بعض نصوص المساعدة المفيدة."
+
+#: .\store\models.py:14
+msgid "description"
+msgstr "الوصف"
+
+#: .\store\models.py:15 .\templates\store\product_list.html:10
+msgid "price"
+msgstr "السعر"
+
+#: .\store\models.py:16 .\templates\store\product_list.html:11
+msgid "category"
+msgstr "الصنف"
+
+#: .\store\models.py:17
+msgid "image"
+msgstr "الصورة"
+
+#: .\store\models.py:24 .\store\models.py:25
+msgid "email"
+msgstr "الايميل"
+
+#: .\store\models.py:31
+msgid "customer"
+msgstr "العميل"
+
+#: .\store\models.py:32 .\templates\layouts\header.html:16
+#: .\templates\store\category_detail.html:19
+msgid "products"
+msgstr "المنتجات"
+
+#: .\store\models.py:33
+msgid "order_date"
+msgstr "تاريخ الطلب"
+
+#: .\store\models.py:34
+msgid "total_price"
+msgstr "اجمالي السعر"
+
+#: .\store\models.py:40
+msgid "product"
+msgstr "المنتج"
+
+#: .\store\models.py:41
+msgid "order"
+msgstr "الطلب"
+
+#: .\store\models.py:42
+msgid "quantity"
+msgstr "العدد"
+
+#: .\store\models.py:50
+msgid "user"
+msgstr ""
+
+#: .\store\models.py:51
+msgid "key"
+msgstr ""
+
+#: .\store\models.py:52
+msgid "value"
+msgstr ""
+
+#: .\templates\layouts\header.html:4
+msgid "store"
+msgstr "متجر"
+
+#: .\templates\layouts\header.html:12 .\templates\layouts\header.html:63
+msgid "home"
+msgstr "الرئيسية"
+
+#: .\templates\layouts\header.html:21
+msgid "categories"
+msgstr "الاصناف"
+
+#: .\templates\layouts\header.html:25
+msgid "logout"
+msgstr ""
+
+#: .\templates\layouts\header.html:66
+msgid "login"
+msgstr ""
+
+#: .\templates\store\category_confirm_delete.html:9
+#: .\templates\store\product_confirm_delete.html:12
+msgid "cancel"
+msgstr "الغاء"
+
+#: .\templates\store\category_detail.html:5
+#: .\templates\store\category_list.html:19
+msgid "details"
+msgstr "تفاصيل"
+
+#: .\templates\store\category_detail.html:9
+msgid "category Name :"
+msgstr "الصنف"
+
+#: .\templates\store\category_detail.html:22
+msgid "product Name : "
+msgstr "المنتج"
+
+#: .\templates\store\category_detail.html:34
+msgid "There are no products yet"
+msgstr "لا يوجد منتجات بعد"
+
+#: .\templates\store\category_detail.html:40
+#: .\templates\store\category_list.html:21
+#: .\templates\store\product_confirm_delete.html:4
+#: .\templates\store\product_confirm_delete.html:11
+#: .\templates\store\product_detail.html:46
+#: .\templates\store\product_list.html:25
+msgid "delete"
+msgstr "حذف"
+
+#: .\templates\store\category_detail.html:43
+#: .\templates\store\category_list.html:20
+#: .\templates\store\product_detail.html:49
+#: .\templates\store\product_list.html:24
+msgid "update"
+msgstr "تعديل"
+
+#: .\templates\store\category_form.html:7 .\templates\store\product_form.html:7
+msgid "save"
+msgstr "حفظ"
+
+#: .\templates\store\category_list.html:8 .\templates\store\product_list.html:8
+msgid "id"
+msgstr "الرقم"
+
+#: .\templates\store\category_list.html:10
+#: .\templates\store\product_list.html:12
+msgid "actions"
+msgstr "اجرائات"
+
+#: .\templates\store\product_detail.html:9
+msgid "Product Name"
+msgstr "المنتج"
+
+#: .\templates\store\product_detail.html:16
+msgid "Product Description"
+msgstr "الوصف"
+
+#: .\templates\store\product_detail.html:24
+msgid "Product Price"
+msgstr "المنتج"
+
+#: .\templates\store\product_detail.html:32
+msgid "Product Category"
+msgstr "صنف المنتج"
+
+#: .\templates\store\product_detail.html:39
+msgid "Product Image"
+msgstr "صورة المنتج"
+
+#: .\templates\store\product_list.html:4
+msgid "Add New"
+msgstr "اضف جديد"
+
+#: .\templates\store\product_list.html:23
+msgid "detail"
+msgstr "تفاصيل"

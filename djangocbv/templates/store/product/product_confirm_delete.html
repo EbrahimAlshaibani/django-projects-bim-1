@@ -1,0 +1,16 @@
+{% extends "layouts/master.html" %}
+{% load i18n %}
+{% block content %}
+{% trans "delete" %}
+<form method="post">
+    {% csrf_token %}
+    <div class="alert alert-light" role="alert">
+      Are you sure you want to delete <a href="{% url "store:product_detail" product.id %}">{{product.name}}</a> from the database ?
+    </div>
+    
+    <button type="submit" class="btn btn-danger">{% trans "delete" %}</button>
+    <a href="{% url 'store:products' %}" class="btn btn-secondary">{% trans "cancel" %}</a>
+  </form>
+{% endblock content %}
+
+  

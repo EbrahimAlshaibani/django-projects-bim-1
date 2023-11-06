@@ -1,0 +1,9 @@
+{% extends "layouts/master.html" %}
+{% block content %}
+{% load i18n %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-outline-secondary btn-sm">{% trans "save" %}</button>
+  </form>
+  {% endblock content %}

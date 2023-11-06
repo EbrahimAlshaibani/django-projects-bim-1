@@ -1,0 +1,41 @@
+{% extends "layouts/master.html" %}
+{% block content %}
+{% load i18n %}
+
+{% if orders %}
+<table class="table table-striped text-center">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">{% trans "name" %}</th>
+        <th scope="col">{% trans "unit price" %}</th>
+        <th scope="col">{% trans "quantity" %}</th>
+        <th scope="col">{% trans "price" %}</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+      <tr>
+        <th>{{order.product.name}}</th>
+        <td>{{order.product.price}}</td>
+        <td>{{order.quantity}}</td>
+        <td>{% widthratio order.quantity 1 order.product.price %}</td>
+      </tr>
+      {% endfor %}
+      <tr class="table-primary">
+        <th colspan="2">total</th>
+        <td>{{total_orders}}</td>
+        <td>{{ order.total_price }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <a class="btn btn-primary d-block" href="{% url "store:order_confirm" %}">{% trans "buy" %}</a>
+
+
+{% else %}
+
+no orders yet
+{% endif %}
+
+{% endblock content %}
+
+

@@ -1,0 +1,11 @@
+{% extends "layouts/master.html" %}
+{% block content %}
+<div class="container">
+<h2>Update Post</h2>
+<form action="{% url 'update' post.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-success" value="Update Post">
+</form>
+</div>
+{% endblock %}

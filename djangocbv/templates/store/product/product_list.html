@@ -1,0 +1,35 @@
+{% extends "layouts/master.html" %}
+{% block content %}
+{% load i18n %}
+{% if perms.store.add_product %}
+<a class="btn btn-outline-secondary btn-sm" href="{% url "store:product_create" %}" >{% trans "Add New" %}</a>
+{% else %}
+{% endif %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">{% trans "id" %}</th>
+      <th scope="col">{% trans "name" %}</th>
+      <th scope="col">{% trans "price" %}</th>
+      <th scope="col">{% trans "category" %}</th>
+      <th scope="col">{% trans "actions" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for product in object_list %}
+      <tr>
+        <th>{{product.id}}</th>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.category}}</td>
+        <td>
+          {% if perms.store.view_product %}<a class="btn btn-outline-secondary btn-sm" href="{% url "store:product_detail" product.id %}" >{% trans "detail" %}</a>{% endif %}
+          {% if perms.store.change_product %}<a class="btn btn-outline-secondary btn-sm" href="{% url "store:product_update" product.id %}" >{% trans "update" %}</a>{% endif %}
+          {% if perms.store.delete_product %}<a class="btn btn-outline-secondary btn-sm" href="{% url "store:product_delete" product.id %}" >{% trans "delete" %}</a>{% endif %}
+          {% if perms.store.add_order %}<a class="btn btn-outline-secondary btn-sm" href="{% url "store:order_create" product.id %}" >{% trans "add to cart" %}</a>{% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

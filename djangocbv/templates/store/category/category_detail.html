@@ -1,0 +1,52 @@
+{% extends "layouts/master.html" %}
+{% block content %}
+{% load i18n %}
+<div class="container mt-2 border rounded p-2">
+    <h3 class="text-center">{{category.name}} {% trans "details" %}</h3>
+    <hr>
+    <div class="row">
+        <div class="col-6">
+            <b>{% trans "category Name :" %}a </b>
+        </div>
+        <div class="col-6">
+            {{category.name}}
+        </div>
+
+        {% with category.category_products.all as products %}
+        {% if products %}
+        <hr class='m-2'>
+            {% for product in products %}
+            <p class="text-center">{% trans "products" %}</p>
+            <hr>
+            <div class="col-6">
+                {% trans "product Name : " %}
+                
+            </div>
+            <div class="col-6">
+                
+                <b>
+                    <a href="{% url "store:product_detail" product.id %}"> {{product.name}}</a>
+                </b>
+            </div>
+            
+            {% endfor %}
+        {% else %}
+            <p>{% trans "There are no products yet" %}</p>
+        {% endif %}
+        {% endwith %}
+
+
+        <div class="col-6 mt-2">
+        <a class="btn btn-outline-danger d-block btn-sm" href="{% url "store:category_delete" category.id %}" >{% trans "delete" %}</a>
+        </div>
+        <div class="col-6 mt-2">
+            <a class="btn btn-outline-secondary d-block btn-sm" href="{% url "store:category_update" category.id %}" >{% trans "update" %}</a>
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock content %}
+
+

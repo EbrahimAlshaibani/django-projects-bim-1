@@ -1,0 +1,58 @@
+{% extends "layouts/master.html" %}
+{% block content %}
+{% load i18n %}
+<div class="container mt-2 border rounded p-2">
+    <h3 class="text-center">{{product.name}} Details</h3>
+    <hr>
+    <div class="row">
+        <div class="col-6">
+            <b>{% trans "Product Name" %} : </b>
+        </div>
+        <div class="col-6">
+            {{product.name}}
+        </div>
+
+        <div class="col-6">
+            <b>{% trans "Product Description" %} : </b>
+        </div>
+        <div class="col-6">
+            {{product.description}}
+        </div>
+
+
+        <div class="col-6">
+            <b>{% trans "Product Price" %} : </b>
+        </div>
+        <div class="col-6">
+            {{product.price}}
+        </div>
+
+
+        <div class="col-6">
+            <b>{% trans "Product Category" %} : </b>
+        </div>
+        <div class="col-6">
+            {{product.category}}
+        </div>
+
+        <div class="col-12 text-center mt-2">
+            <b>{% trans "Product Image" %}  </b>
+        </div>
+        <div class="col-12">
+            <img src="{{product.image.url}}" class="w-100 rounded mt-4"/>
+        </div>
+
+        <div class="col-6 mt-2">
+        <a class="btn btn-outline-danger d-block btn-sm" href="{% url "store:product_delete" product.id %}" >{% trans "delete" %}</a>
+        </div>
+        <div class="col-6 mt-2">
+            <a class="btn btn-outline-secondary d-block btn-sm" href="{% url "store:product_update" product.id %}" >{% trans "update" %}</a>
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock content %}
+
+

@@ -1,0 +1,120 @@
+{% extends "layouts/master.html" %}
+{% load static %}
+{% block content %}
+    <div class="d-block container">
+
+  <form method="GET" action="{% url "post-list" %}"> 
+      {{filter.form}}
+      <button type="submit" class="btn btn-success">Add</button>
+  </form>
+  
+
+
+      {% if perms.core.add_post %}
+        <a href="{% url 'create' %}" class="btn btn-sm mt-2">Add new post</a>
+      {% endif %}
+
+      
+    {% for post in posts %}
+    <div class="card mt-2">
+        <div class="d-flex justify-content-between align-items-center m-2">
+           <div class="d-flex">
+            <img src="{% if post.author.profile_user.image %}
+                      {{post.author.profile_user.image.url}}
+                      {% else %}
+                        {% static 'images/logos/profile-img.jpg' %}
+                      {% endif %}"
+                       width="50"  class="m-2 rounded-circle" >
+            <p class="m-2">{{post.author.username}}</p>
+           </div>
+           {% if post.author == user %}
+            <div class="btn-group">
+              <button type="button" class="btn  dropdown-toggles dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" style="outline: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                  <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                </svg>
+              </button>
+              <ul class="dropdown-menu">
+                {% if perms.core.delete_post %}
+                <li><a class="dropdown-item" href="{% url "delete" id=post.id %}">Delete</a></li>
+                {% endif %}
+                {% if perms.core.change_post %}
+                <li><a class="dropdown-item" href="{% url "update" id=post.id %}">Update</a></li>
+                {% endif %}
+                <li><hr class="dropdown-divider"></li>
+                {% if perms.core.view_post %}
+                <li><a class="dropdown-item" href="">Show</a></li>
+                {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+
+        </div>
+        {% if post.image %}
+          <img src="{{post.image.url}}" class="card-img-top" alt="...">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.desc}}</p>
+          <p>Comments</p>
+          {% with post.comment_post.all as comments %}
+          {% if comments %}
+              {% for comment in comments %}
+                {% if comment.is_hidden %}
+                
+                {% else %}
+                <div class="container d-flex justify-content-between m-1 p-2 border">
+                  <div class="d-flex">
+                    <img src="
+                    {% if comment.author.profile_user.image %}
+                    {{comment.author.profile_user.image.url}}
+                    {% else %}
+                      {% static 'images/logos/profile-img.jpg' %}
+                    {% endif %}" class="rounded-circle" style="object-fit: cover;"  width="50" height="50" alt="" srcset="">
+                    <p class="p-2">{{comment.author.username}}</p>
+                  </div>
+                  <div class="d-flex">
+                    <p class="m-2">{{comment.desc}}</p>
+                    {% if comment.author == user %}
+                    <div class="btn-group">
+                      <button type="button" class="btn  dropdown-toggles dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" style="outline: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                          <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                        </svg>
+                      </button>
+                      <ul class="dropdown-menu">
+                        {% if perms.core.delete_comment %}
+                        <li><a class="dropdown-item" href="{% url "comment_delete" id=comment.id %}">Delete</a></li>
+                        {% endif %}
+                        {% if perms.core.change_comment %}
+                        <li><a class="dropdown-item" href="{% url "comment_update" id=comment.id %}">Update</a></li>
+                        {% endif %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                  </div>
+              </div>
+                {% endif %}
+              {% endfor %}
+          {% else %}
+              <p>There are no comments for this post.</p>
+          {% endif %}
+      {% endwith %}
+
+      {% comment %} <a href="{% url "create_comment" id=post.id  %}" class="btn btn-sm btn-primary" >Add Comment</a> {% endcomment %}
+      <hr>
+      <p>add comment</p>
+      <form method="POST" action="{% url "create_comment" id=post.id %}" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Add</button>
+      
+      </form>
+
+    </div>
+      </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,29 @@
+{% extends "layouts/master.html" %}
+{% block content %}
+{% load i18n %}
+<a class="btn btn-outline-secondary btn-sm" href="{% url "store:category_create" %}">Add Category</a>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">{% trans "id" %}</th>
+        <th scope="col">{% trans "name" %}</th>
+        <th scope="col">{% trans "actions" %}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for category in object_list %}
+    <tr>
+        <th>{{category.id}}</th>
+        <td>{{category.name}}</td>
+        <td>
+            <a class="btn btn-outline-secondary btn-sm" href="{% url "store:category_detail" category.id %}" >{% trans "details" %}</a>
+            <a class="btn btn-outline-secondary btn-sm" href="{% url "store:category_update" category.id %}" >{% trans "update" %}</a>
+            <a class="btn btn-outline-secondary btn-sm" href="{% url "store:category_delete" category.id %}" >{% trans "delete" %}</a>  
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}
+
+

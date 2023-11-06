@@ -1,0 +1,14 @@
+:root {
+  scroll-behavior: smooth;
+}
+@font-face {
+  font-family: 'tajawal';
+  src: url('/static/fonts/tajawal.ttf');
+}
+body {
+  font-family: 'tajawal', sans-serif;
+}
+.position-relative span{
+  font-size: 8px;
+  padding: 2px;
+}
